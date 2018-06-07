@@ -12,7 +12,7 @@ int main(){
     float latInicial = -7.162310, longInicial = -34.817222;
 
     printf("Quantas entregas deseja realizar hoje? \n");
-    scanf("%d", &nEntregas); // Armazena o n˙mero de entregas que v„o ser registradas
+    scanf("%d", &nEntregas); // Armazena o n√∫mero de entregas que v√£o ser registradas
 
     float latitude[nEntregas], longitude[nEntregas]; // Cria duas matrizes para armazenar latitude e longitude de cada entrega
 
@@ -21,10 +21,10 @@ int main(){
         scanf("%f %f", &latitude[i], &longitude[i]);
     }
 
-    //TRATAMENTO DA LOCALIZA«√O
-    // Calcula a dist‚ncia de cada entrega ao entregador e armazena na matriz criada antes
+    //TRATAMENTO DA LOCALIZA√á√ÉO
+    // Calcula a dist√¢ncia de cada entrega ao entregador e armazena na matriz criada antes
 
-    double distancia[nEntregas]; // Cria matriz para armazenar a dist‚ncia das entregas ao entregador
+    double distancia[nEntregas]; // Cria matriz para armazenar a dist√¢ncia das entregas ao entregador
 
     for(i=0; i<nEntregas; i++){
         latitude[i] = latitude[i] * deg2radMult;
@@ -33,11 +33,12 @@ int main(){
         longInicial = longInicial * deg2radMult;
 
         dLongitude = longInicial - longitude[i];
-        distancia[i] = acos(sin(latitude[i])* sin(latInicial) + cos(latitude[i]) * cos(latInicial) * cos(dLongitude)) * radius;
+        distancia[i] = acos(sin(latitude[i])* sin(latInicial) + cos(latitude[i]) * cos(latInicial) * cos(dLongitude)) * radius; 
+        // Coloca a dist√¢ncia da entrega para o entregador em cada elemento respectivo na matriz
 
-        distancia[i] = distancia[i] * 0.621371192;
+        distancia[i] = distancia[i] * 0.621371192; // Converte a dist√¢ncia de radianos para metros
 
-        printf("%llf m \n", distancia[i]);
+        printf("%llf m \n", distancia[i]); // print que fiz s√≥ pra testar
     }
 
     return 0;
